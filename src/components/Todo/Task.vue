@@ -1,27 +1,26 @@
 <template>
   <div>
-    <v-list-item
-      @click="$store.commit('doneTask', task.id)"
-      :class="{ 'blue lighten-5': task.done }"
-    >
+    <v-list-item @click="$store.commit('doneTask', task.id)" :class="{ 'blue lighten-5': task.done }">
       <template v-slot:default>
         <v-list-item-action>
           <v-checkbox :input-value="task.done"></v-checkbox>
         </v-list-item-action>
         <v-list-item-content>
-          <v-list-item-title
-            :class="{ 'text-decoration-line-through': task.done }"
-            >{{ task.title }}</v-list-item-title
-          >
+          <v-list-item-title :class="{ 'text-decoration-line-through': task.done }">{{ task.title }}</v-list-item-title>
         </v-list-item-content>
         <v-list-item-action v-if="task.dueDate">
           <v-list-item-action-text>
             <v-icon small>mdi-calendar</v-icon>
-            {{ task.dueDate | niceDate }}</v-list-item-action-text
-          >
+            {{ task.dueDate | niceDate }}
+          </v-list-item-action-text>
         </v-list-item-action>
         <v-list-item-action>
           <task-menu :task="task"></task-menu>
+        </v-list-item-action>
+        <v-list-item-action>
+          <v-btn color="primary" icon>
+            <v-icon>mdi-drag-horizontal-variant</v-icon>
+          </v-btn>
         </v-list-item-action>
       </template>
     </v-list-item>
@@ -50,4 +49,5 @@ export default {
 </script>
 
 <style>
+
 </style>
